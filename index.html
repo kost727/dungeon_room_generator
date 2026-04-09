@@ -661,6 +661,33 @@
             .container {
                 padding: 15px;
             }
+
+            /* ========== НОВЫЙ КОД: кнопки друг под другом на телефоне ========== */
+            .edit-controls {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 10px !important;
+            }
+
+            .edit-controls .form-group {
+                width: 100% !important;
+                margin-bottom: 10px !important;
+            }
+
+            .edit-controls .edit-btn {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+
+            /* Блок с кнопками соединений внутри edit-controls */
+            .edit-controls div[style*="display: flex; gap: 5px; margin: 5px 0; width: 100%;"] {
+                flex-direction: column !important;
+                gap: 10px !important;
+            }
+
+            .edit-controls div[style*="display: flex; gap: 5px; margin: 5px 0; width: 100%;"] .edit-btn {
+                width: 100% !important;
+            }
         }
 
         /* Режим редактирования */
@@ -799,7 +826,7 @@
         <header>
             <div style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
                 <h1><i class="fas fa-dungeon"></i> Генератор комнат подземелий</h1>
-                <p class="subtitle">Создайте эпические приключения для вашей кампании</p>
+                <p class="subtitle">Создай уникальное подземелье для своей кампании взяв готовое</p>
 
                 <div style="
             background: rgba(233, 196, 106, 0.15);
@@ -812,10 +839,10 @@
             color: var(--text-light);
             line-height: 1.5;
         ">
-                    <strong>📢:</strong> С запросом последней версии генератора, комментариями, благодарностью, вопросами, словами поддержки, донатами, запросами обновлений и претензиями просим писать
+                    <strong>📢:</strong> Контакты:
                     <span style="color: var(--accent-gold); font-weight: bold;">@kost727</span> или
                     <span style="color: var(--accent-gold); font-weight: bold;">kmartin27@mail.ru</span>,
-                    нам это важно! Без шуток. По запросу с удовольствием добавлю новые тематики, ловушки, загадки и фичи в генератор!
+                    Присылайте нам мемы, идеи для тематик, ловушек, загадок и функционала!
                     <span style="display: block; margin-top: 5px; color: var(--accent-green); font-style: italic;">Костя и Ко</span>
                 </div>
             </div>
@@ -4133,8 +4160,8 @@
 
             descriptionElement.innerHTML = `
         <h3>${dungeon.themeData.name} (Ур. ${dungeon.themeData.minLevel}-${dungeon.themeData.maxLevel})</h3>
-        <p><strong>Описание:</strong> ${themeDescription}</p>
-        <p><strong>История подземелья:</strong> ${randomLore}</p>
+        <p><span style="color: var(--accent-gold); font-weight: bold; font-size: 1.05rem;">📖 Описание:</span> ${themeDescription}</p>
+        <p><span style="color: var(--accent-gold); font-weight: bold; font-size: 1.05rem;">📜 История подземелья:</span> ${randomLore}</p>
         <div class="dungeon-stats">
     <div class="stat-card">
         <div class="stat-value">${dungeon.playerCount}</div>
@@ -4179,7 +4206,7 @@
             ${difficultyBreakdown}
         </div>
         ` : ''}
-    `;              
+    `;             
             // Советы для мастера
             const generator = new DungeonGenerator(
                 dungeon.theme, 
